@@ -3,6 +3,9 @@
 /node_modules
 .env
 
+# release artifacts
+shortcutfy-*.zip
+
 # Logs
 logs
 *.log

@@ -7,10 +7,12 @@
     "format": "prettier --write \"src/**/*.ts\" \"scripts/**/*.ts\"",
     "lint": "eslint \"{src,scripts}/**/*.ts\" --fix",
     "style": "yarn format && yarn lint",
-    "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo tsconfig.build.tsbuildinfo shortcutfy-*.zip",
     "build": "tsx scripts/build.ts",
     "build:icons": "tsx scripts/build-icons.ts",
     "build:commands": "tsx src/build-manifest-commands.ts",
+    "package": "tsx scripts/package.ts",
+    "release": "tsx scripts/release.ts",
     "start:dev": "yarn build && tsc --project tsconfig.build.json --watch",
     "test": "tsc --noEmit",
     "prepare": "husky"

@@ -3,19 +3,22 @@ import { join } from 'node:path';
 import sharp from 'sharp';
 
 const ROOT = join(import.meta.dirname, '..');
-const SVG_PATH = join(ROOT, 'src', 'icon.svg');
-const OUT_DIR = join(ROOT, 'src', 'icons');
+const ICON_SVG = join(ROOT, 'src', 'icon.svg');
+const ASSETS = join(ROOT, 'assets');
+const ICONS_OUT = join(ROOT, 'src', 'icons');
 const SIZES = [16, 32, 48, 128];
 
-await mkdir(OUT_DIR, { recursive: true });
+await mkdir(ICONS_OUT, { recursive: true });
 
-await Promise.all(
-  SIZES.map((size) =>
-    sharp(SVG_PATH)
+await Promise.all([
+  ...SIZES.map((size) =>
+    sharp(ICON_SVG)
       .resize(size, size)
       .png({ compressionLevel: 9 })
-      .toFile(join(OUT_DIR, `${size}.png`))
-  )
-);
+      .toFile(join(ICONS_OUT, `${size}.png`))
+  ),
+  sharp(join(ASSETS, 'promo-tile.svg')).png({ compressionLevel: 9 }).toFile(join(ASSETS, 'promo-tile.png')),
+  sharp(join(ASSETS, 'promo-marquee.svg')).png({ compressionLevel: 9 }).toFile(join(ASSETS, 'promo-marquee.png')),
+]);
 
-console.log(`Generated ${SIZES.length} icons in src/icons/`);
+console.log(`Generated ${SIZES.length} icons in src/icons/ and 2 promo tiles in assets/`);

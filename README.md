@@ -105,6 +105,17 @@ scripts/
 
 This repository uses [Conventional Commits](https://www.conventionalcommits.org/), enforced by `commitlint` + a Husky `commit-msg` hook. `pre-commit` runs `lint-staged` (ESLint + Prettier) on touched files.
 
+## Releasing
+
+The first publish to the Chrome Web Store is manual (you need to create a developer account and upload `shortcutfy-<version>.zip` once). After that, every subsequent release is one command — see [`docs/store/RELEASING.md`](docs/store/RELEASING.md).
+
+```sh
+yarn release patch   # bumps version, commits, tags
+git push origin main --follow-tags
+```
+
+GitHub Actions builds the zip, attaches it to a GitHub Release, and (if Chrome Web Store API credentials are configured) uploads and publishes it.
+
 ## License
 
 MIT — see `package.json`.
