@@ -3,7 +3,7 @@
 1. build
 
 ```
-pnpm build
+yarn build
 ```
 
 2. load dist folder as unpacked extension in chromium based browser
