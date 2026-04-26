@@ -61,14 +61,17 @@ Chrome does not let extensions ship default key bindings, so every command start
 
 Requires Node.js (LTS — see `.nvmrc`) and Yarn 4.
 
-| Script                | What it does                                                                  |
-| --------------------- | ----------------------------------------------------------------------------- |
-| `yarn build`          | Compiles `src/` to `dist/` with `tsc`. Output is the loadable extension.      |
-| `yarn start:dev`      | `tsc -w` — incremental rebuilds while you iterate.                            |
-| `yarn lint`           | Runs ESLint with `--fix` over the source.                                     |
-| `yarn format`         | Runs Prettier over `src/**/*.ts`.                                             |
-| `yarn style`          | `yarn format && yarn lint` in one shot.                                       |
-| `yarn build:commands` | Regenerates the `commands` block in `src/manifest.json` from the code source. |
+| Script                | What it does                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------- |
+| `yarn build`          | Clean build of `dist/` — compiles TS, copies `manifest.json` + `icons/`. Output is the loadable extension. |
+| `yarn start:dev`      | One-shot build, then `tsc --watch` for incremental rebuilds. Re-run `yarn build` after manifest/icon edits. |
+| `yarn build:icons`    | Regenerates `src/icons/{16,32,48,128}.png` from `src/icon.svg` (uses `sharp`).                          |
+| `yarn build:commands` | Regenerates the `commands` block in `src/manifest.json` from `commandDefinitions`.                      |
+| `yarn clean`          | Removes `dist/` and the TypeScript incremental cache.                                                   |
+| `yarn lint`           | Runs ESLint with `--fix` over `src/` and `scripts/`.                                                    |
+| `yarn format`         | Runs Prettier over `.ts` sources.                                                                       |
+| `yarn style`          | `yarn format && yarn lint` in one shot.                                                                 |
+| `yarn test`           | `tsc --noEmit` — type-checks the whole repo.                                                            |
 
 After `yarn build`, reload the extension in `chrome://extensions` to pick up changes.
 
@@ -86,11 +89,16 @@ The extension keeps the command list in three synchronized places. To add a comm
 ```
 src/
 ├── service-worker.ts          # MV3 background entry — registers chrome.commands listener
-├── manifest.json              # Extension manifest (declares commands)
-├── build-manifest-commands.ts # Regenerates manifest.commands from source
+├── manifest.json              # Extension manifest (declares commands, icons, permissions)
+├── icon.svg                   # Master icon (rendered into PNGs by yarn build:icons)
+├── icons/                     # Generated PNG icons (16/32/48/128)
+├── build-manifest-commands.ts # Regenerates manifest.commands from source (dev-only)
 ├── enums/                     # Command enum (single source of truth for command keys)
 ├── facades/                   # Thin wrappers around chrome.tabs.* used by helpers
 └── helpers/                   # Command handlers — tabs, windows, browser-url shortcuts
+scripts/
+├── build.ts                   # Runs tsc + copies manifest/icons into dist/
+└── build-icons.ts             # Renders src/icon.svg into PNG sizes
 ```
 
 ### Commits

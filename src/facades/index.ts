@@ -1,8 +1,10 @@
 export class TabFacade {
-  public static async currentTab(): Promise<chrome.tabs.Tab> {
+  public static async currentTab(): Promise<chrome.tabs.Tab | undefined> {
     const [currentTab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-    return chrome.tabs.get(currentTab.id!);
+    if (!currentTab?.id) return undefined;
+
+    return chrome.tabs.get(currentTab.id);
   }
 
   public static async currentWindowTabs(): Promise<chrome.tabs.Tab[]> {

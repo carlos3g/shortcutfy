@@ -21,7 +21,7 @@ import {
   openHistory,
   openSettings,
   pinTab,
-  previusTab,
+  previousTab,
   reloadTab,
   tabGoBack,
   tabGoForward,
@@ -30,7 +30,7 @@ import {
 type CommandKeys = keyof typeof Command;
 
 const commandHandlers = {
-  [Command.TabPrevious]: previusTab,
+  [Command.TabPrevious]: previousTab,
   [Command.TabNext]: nextTab,
   [Command.TabMoveToPrevious]: moveToPreviousTab,
   [Command.TabMoveToNext]: moveToNextTab,

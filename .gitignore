@@ -28,7 +28,7 @@ echoes-db
 *.launch
 .settings/
 *.sublime-workspace
-tsconfig.tsbuildinfo
+*.tsbuildinfo
 
 # IDE - VSCode
 .vscode/*
