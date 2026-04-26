@@ -15,7 +15,7 @@
    - **Detailed description**: paste from `docs/store/description.md`
    - **Category**: Productivity
    - **Language**: English (United States)
-   - **Store icon**: upload `dist/icons/128.png`
+   - **Store icon**: upload `assets/store-icon-128.png`
    - **Screenshots**: at least one 1280×800. Recommended: open `chrome://extensions/shortcuts`, bind a few Shortcutfy commands, then take a 1280×800 screenshot of that page. Save under `assets/screenshot-1.png` for re-use.
    - **Promo tile** (440×280): upload `assets/promo-tile.png`
    - **Marquee** (1400×560, optional): upload `assets/promo-marquee.png`
