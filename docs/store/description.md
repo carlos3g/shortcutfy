@@ -1,10 +1,8 @@
 # Long description (paste into Chrome Web Store devconsole)
 
-Shortcutfy turns your keyboard into a power tool for browsing.
+Shortcutfy is a single-purpose extension that lets you navigate the browser using only your keyboard.
 
-If you've ever wished you could move the current tab to the leftmost position, mute the active tab, open chrome://flags, or duplicate a tab — without ever touching the mouse — Shortcutfy gives you a binding for that. Plus two dozen other things the browser doesn't ship out of the box.
-
-There is no UI. Nothing to learn. You bind your keys once at chrome://extensions/shortcuts and they work everywhere.
+Every command in the extension is a target for a keyboard binding you assign at chrome://extensions/shortcuts. Bind once, then move tabs, mute audio, open chrome://flags, create incognito windows, and more — all without ever touching the mouse. There is no UI. Nothing to learn beyond the keys you choose.
 
 ✦ TABS
 • Cycle to previous / next tab (with wrap-around at the ends)

@@ -7,7 +7,7 @@ Used to read the index, pinned state, mute state, and group ID of the currently 
 Used to read the active tab's group ID so the "New tab in current group" command can place the newly created tab in the same group. The extension does not modify or read the contents of other groups.
 
 ## Single purpose description
-Provides keyboard shortcuts for tab and window management, plus quick links to internal Chrome pages. There is no UI; users assign keys at chrome://extensions/shortcuts.
+Provides user-configurable keyboard shortcuts for navigating Chromium browsers without using the mouse. Every command in the extension is a target for a keyboard binding the user assigns at chrome://extensions/shortcuts; the extension has no UI and performs no behavior outside of dispatching those shortcuts. Tab actions, window actions, and links to built-in chrome:// pages are different shortcut targets that all share the same single purpose: keyboard-driven navigation.
 
 ## Data usage disclosures (check these on the form)
 - [x] I do not collect or use user data

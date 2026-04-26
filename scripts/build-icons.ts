@@ -12,7 +12,10 @@ await mkdir(ICONS_OUT, { recursive: true });
 
 await Promise.all([
   ...SIZES.map((size) =>
-    sharp(ICON_SVG).resize(size, size).png({ compressionLevel: 9 }).toFile(join(ICONS_OUT, `${size}.png`)),
+    sharp(ICON_SVG)
+      .resize(size, size)
+      .png({ compressionLevel: 9 })
+      .toFile(join(ICONS_OUT, `${size}.png`))
   ),
   sharp(ICON_SVG).resize(128, 128).png({ compressionLevel: 9 }).toFile(join(ASSETS, 'store-icon-128.png')),
   sharp(join(ASSETS, 'promo-tile.svg')).png({ compressionLevel: 9 }).toFile(join(ASSETS, 'promo-tile.png')),

@@ -1,7 +1,7 @@
 {
   "name": "shortcutfy",
   "version": "1.0.0",
-  "description": "Customizable keyboard shortcuts for Chromium browsers.",
+  "description": "Configurable keyboard shortcuts for navigating Chromium browsers without the mouse.",
   "type": "module",
   "scripts": {
     "format": "prettier --write \"src/**/*.ts\" \"scripts/**/*.ts\"",

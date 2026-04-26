@@ -1,6 +1,6 @@
 {
   "author": "carlos3g",
-  "description": "Customizable keyboard shortcuts for tabs, windows, and quick access to chrome:// pages.",
+  "description": "Configurable keyboard shortcuts for navigating Chromium browsers without the mouse.",
   "manifest_version": 3,
   "name": "Shortcutfy",
   "version": "1.0.0",
