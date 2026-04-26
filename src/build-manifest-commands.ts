@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { Command } from './enums';
-import manifest from './manifest.json';
+import { Command } from './enums/index.js';
+import manifest from './manifest.json' with { type: 'json' };
 
 const commandDefinitions = {
   [Command.TabPrevious]: { description: 'Select previous tab' },
@@ -34,7 +34,7 @@ const commandDefinitions = {
 const buildManifestCommands = async () => {
   Object.assign(manifest.commands, commandDefinitions);
 
-  await fs.writeFile(path.join(__dirname, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  await fs.writeFile(path.join(import.meta.dirname, 'manifest.json'), JSON.stringify(manifest, null, 2));
 };
 
 void buildManifestCommands();

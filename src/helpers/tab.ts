@@ -76,7 +76,7 @@ export const duplicateTab = async () => {
 
 export const pinTab = async () => {
   await runOnCurrentTab(async (tab: chrome.tabs.Tab) => {
-    await chrome.tabs.update(tab.id!, {
+    await chrome.tabs.update(tab.id, {
       pinned: !tab.pinned,
     });
   });
@@ -84,7 +84,7 @@ export const pinTab = async () => {
 
 export const muteTab = async () => {
   await runOnCurrentTab(async (tab: chrome.tabs.Tab) => {
-    await chrome.tabs.update(tab.id!, {
+    await chrome.tabs.update(tab.id, {
       muted: !tab.mutedInfo?.muted,
     });
   });
@@ -102,13 +102,13 @@ export const createNewTab = async () => {
 
 export const tabGoBack = async () => {
   await runOnCurrentTab(async (tab: chrome.tabs.Tab) => {
-    await chrome.tabs.goBack(tab.id!);
+    await chrome.tabs.goBack(tab.id);
   });
 };
 
 export const tabGoForward = async () => {
   await runOnCurrentTab(async (tab: chrome.tabs.Tab) => {
-    await chrome.tabs.goForward(tab.id!);
+    await chrome.tabs.goForward(tab.id);
   });
 };
 

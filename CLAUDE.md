@@ -10,8 +10,8 @@ Shortcutfy is a Chrome (Manifest V3) extension that registers a service worker w
 
 - `yarn build` — `tsc` compiles `src/` to `dist/`. Load `dist/` as an unpacked extension in a Chromium browser.
 - `yarn start:dev` — `tsc -w` for incremental rebuilds while iterating.
-- `yarn lint` / `yarn format` / `yarn style` — ESLint (Airbnb + TS), Prettier, and both together.
-- `yarn build:commands` — runs `src/build-manifest-commands.ts` via `ts-node`. **Writes back to `src/manifest.json`** (not to `dist/`), regenerating the `commands` block from the `Command` enum + `commandDefinitions` map. Run this after adding a new command so the source manifest stays in sync.
+- `yarn lint` / `yarn format` / `yarn style` — ESLint 9 flat config (`eslint.config.mjs` — `@eslint/js` recommended + `typescript-eslint` recommended-type-checked + Prettier), Prettier on its own, and both together.
+- `yarn build:commands` — runs `src/build-manifest-commands.ts` via `tsx`. **Writes back to `src/manifest.json`** (not to `dist/`), regenerating the `commands` block from the `Command` enum + `commandDefinitions` map. The output is `JSON.stringify`-formatted (not Prettier-formatted), so follow this with `yarn format` before committing. Run this after adding a new command so the source manifest stays in sync.
 - No real test suite — `yarn test` is a placeholder that exits 0 (the `pre-push` hook runs it).
 
 Husky hooks: `pre-commit` runs `lint-staged` (eslint + prettier), `commit-msg` runs commitlint (Conventional Commits), `pre-push` runs `yarn test`.
@@ -41,4 +41,4 @@ The set of commands is declared in three places that must stay aligned:
 
 ## Package manager
 
-Yarn 4 (Berry) with `nodeLinker: node-modules` (configured in `.yarnrc.yml`) — PnP is intentionally disabled because `ts-node`, `tsconfig-paths`, and `ts-loader` in this project assume a real `node_modules` tree.
+Yarn 4 (Berry) with `nodeLinker: node-modules` (configured in `.yarnrc.yml`) — PnP is intentionally disabled to keep tooling (`tsx`, ESLint plugin resolution) on the well-trodden path of a real `node_modules` tree.

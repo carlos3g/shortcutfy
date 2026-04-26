@@ -63,7 +63,6 @@ chrome.commands.onCommand.addListener((command) => {
   if (handler) {
     void handler();
   } else {
-    // eslint-disable-next-line no-console
     console.error('Unknown command', command);
   }
 });
